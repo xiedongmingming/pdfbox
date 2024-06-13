@@ -164,7 +164,7 @@ public abstract class BaseParser
     /**
      * This is the document that will be parsed.
      */
-    protected COSDocument document;
+    protected COSDocument document; // ？？？啥时候赋值 COSParser.init
 
     /**
      * Default constructor.

@@ -251,10 +251,10 @@ public class PDPage implements COSObjectable, PDContentStream
      */
     public boolean hasContents()
     {
-        COSBase contents = page.getDictionaryObject(COSName.CONTENTS);
+        COSBase contents = page.getDictionaryObject(COSName.CONTENTS); // COSStream
         if (contents instanceof COSStream)
         {
-            return ((COSStream) contents).size() > 0;
+            return ((COSStream) contents).size() > 0; // 流
         }
         else if (contents instanceof COSArray)
         {

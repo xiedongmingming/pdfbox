@@ -56,7 +56,7 @@ import org.apache.pdfbox.pdmodel.interactive.viewerpreferences.PDViewerPreferenc
  *
  * @author Ben Litchfield
  */
-public class PDDocumentCatalog implements COSObjectable
+public class PDDocumentCatalog implements COSObjectable // 目录
 {
     private static final Logger LOG = LogManager.getLogger(PDDocumentCatalog.class);
     

@@ -98,7 +98,7 @@ public class PDFParser extends COSParser
      * The initial parse will first parse only the trailer, the xrefstart and all xref tables to have a pointer (offset)
      * to all the pdf's objects. It can handle linearized pdfs, which will have an xref at the end pointing to an xref
      * at the beginning of the file. Last the root object is parsed.
-     * 
+     * 初始解析将首先只解析尾部、xrefstart和所有xref表，以获得指向所有pdf对象的指针(偏移量)。它可以处理线性化的pdf文件，其中末尾有一个xref指向文件开头的xref。最后解析根对象。
      * @throws InvalidPasswordException If the password is incorrect.
      * @throws IOException If something went wrong.
      */

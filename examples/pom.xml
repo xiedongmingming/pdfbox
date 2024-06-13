@@ -39,6 +39,9 @@
 
   <properties>
     <lucene.version>9.9.1</lucene.version>
+    <!-- add start：xieming 2024-06-12 -->
+    <commons-codec.version>1.10</commons-codec.version>
+    <!-- add end -->
   </properties>
 
   <dependencies>
@@ -117,6 +120,53 @@
         <version>1.26.1</version>
         <scope>test</scope>
     </dependency>
+
+      <!-- add start：xieming 2024-06-12 -->
+      <dependency>
+          <groupId>${project.groupId}</groupId>
+          <artifactId>pdfbox</artifactId>
+          <version>${project.version}</version>
+      </dependency>
+      <dependency>
+          <groupId>${project.groupId}</groupId>
+          <artifactId>fontbox</artifactId>
+          <version>${project.version}</version>
+      </dependency>
+      <dependency>
+          <groupId>${project.groupId}</groupId>
+          <artifactId>xmpbox</artifactId>
+          <version>${project.version}</version>
+      </dependency>
+      <dependency>
+          <groupId>${project.groupId}</groupId>
+          <artifactId>preflight</artifactId>
+          <version>2.0.0</version>
+<!--          <version>${project.version}</version>-->
+      </dependency>
+      <dependency>
+          <groupId>${project.groupId}</groupId>
+          <artifactId>pdfbox-tools</artifactId>
+          <version>${project.version}</version>
+      </dependency>
+      <dependency>
+          <groupId>${project.groupId}</groupId>
+          <artifactId>jempbox</artifactId>
+          <version>1.8.11</version>
+<!--          <version>${project.version}</version>-->
+      </dependency>
+
+      <dependency>
+          <groupId>commons-codec</groupId>
+          <artifactId>commons-codec</artifactId>
+          <version>${commons-codec.version}</version>
+      </dependency>
+
+      <dependency>
+          <groupId>org.apache.commons</groupId>
+          <artifactId>commons-lang3</artifactId>
+          <version>3.14.0</version>
+      </dependency>
+      <!-- add end -->
   </dependencies>
 
   <build>

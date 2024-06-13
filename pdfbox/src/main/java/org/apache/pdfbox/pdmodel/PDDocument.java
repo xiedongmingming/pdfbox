@@ -115,11 +115,11 @@ public class PDDocument implements Closeable
 
     // cached values
     private PDDocumentInformation documentInformation;
-    private PDDocumentCatalog documentCatalog;
+    private PDDocumentCatalog documentCatalog; // 目录
 
     // the encryption will be cached here. When the document is decrypted then
     // the COSDocument will not have an "Encrypt" dictionary anymore and this object must be used
-    private PDEncryption encryption;
+    private PDEncryption encryption; // 加密信息：可以为NULL
 
     // holds a flag which tells us if we should remove all security from this documents.
     private boolean allSecurityToBeRemoved;
@@ -129,7 +129,7 @@ public class PDDocument implements Closeable
     private Long documentId;
 
     // the pdf to be read
-    private final RandomAccessRead pdfSource;
+    private final RandomAccessRead pdfSource; // RandomAccessReadBufferedFile
 
     // the access permissions of the document
     private AccessPermission accessPermission;

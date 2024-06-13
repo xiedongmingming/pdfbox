@@ -114,7 +114,7 @@ public class COSParser extends BaseParser implements ICOSParser
      */
     private boolean isLenient = true;
 
-    protected boolean initialParseDone = false;
+    protected boolean initialParseDone = false; // 标识文档是否解析过
 
     private boolean trailerWasRebuild = false;
     
@@ -1062,7 +1062,7 @@ public class COSParser extends BaseParser implements ICOSParser
     private boolean parseHeader(String headerMarker, String defaultVersion) throws IOException
     {
         // read first line
-        String header = readLine();
+        String header = readLine(); // %PDF-1.7
         // some pdf-documents are broken and the pdf-version is in one of the following lines
         if (!header.contains(headerMarker))
         {

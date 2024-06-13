@@ -119,15 +119,15 @@ public class PDFTextStripper extends LegacyPDFStreamEngine
     private String wordSeparator = " ";
     private String paragraphStart = "";
     private String paragraphEnd = "";
-    private String pageStart = "";
+    private String pageStart = ""; // ？？？
     private String pageEnd = LINE_SEPARATOR;
     private String articleStart = "";
     private String articleEnd = "";
 
     private int currentPageNo = 1;
-    private int startPage = 1;
-    private int endPage = Integer.MAX_VALUE;
-    private PDOutlineItem startBookmark = null;
+    private int startPage = 1; // 起始页码
+    private int endPage = Integer.MAX_VALUE; // 结束页码
+    private PDOutlineItem startBookmark = null; // ???
 
     // 1-based bookmark pages
     private int startBookmarkPageNumber = -1;
@@ -135,7 +135,7 @@ public class PDFTextStripper extends LegacyPDFStreamEngine
 
     private PDOutlineItem endBookmark = null;
     private boolean suppressDuplicateOverlappingText = true;
-    private boolean shouldSeparateByBeads = true;
+    private boolean shouldSeparateByBeads = true; // 分栏
     private boolean sortByPosition = false;
     private boolean addMoreFormatting = false;
 
@@ -166,7 +166,7 @@ public class PDFTextStripper extends LegacyPDFStreamEngine
 
     private final Map<String, TreeMap<Float, TreeSet<Float>>> characterListMapping = new HashMap<>();
 
-    protected PDDocument document;
+    protected PDDocument document; // 引用的文档
     protected Writer output;
 
     /**
@@ -230,9 +230,9 @@ public class PDFTextStripper extends LegacyPDFStreamEngine
             articleStart = lineSeparator;
             articleEnd = lineSeparator;
         }
-        startDocument(document);
+        startDocument(document); // 钩子
         processPages(document.getPages());
-        endDocument(document);
+        endDocument(document); // 钩子
     }
 
     /**
@@ -326,7 +326,7 @@ public class PDFTextStripper extends LegacyPDFStreamEngine
                 && (startBookmarkPageNumber == -1 || currentPageNo >= startBookmarkPageNumber)
                 && (endBookmarkPageNumber == -1 || currentPageNo <= endBookmarkPageNumber))
         {
-            startPage(page);
+            startPage(page); // 钩子
 
             int numberOfArticleSections = 1;
             if (shouldSeparateByBeads)
@@ -480,7 +480,7 @@ public class PDFTextStripper extends LegacyPDFStreamEngine
         float endOfLastTextX = END_OF_LAST_TEXT_X_RESET_VALUE;
         float lastWordSpacing = LAST_WORD_SPACING_RESET_VALUE;
         float maxHeightForLine = MAX_HEIGHT_FOR_LINE_RESET_VALUE;
-        PositionWrapper lastPosition = null;
+        PositionWrapper lastPosition = null; // 用于合并
         PositionWrapper lastLineStartPosition = null;
 
         boolean startOfPage = true; // flag to indicate start of page
@@ -527,7 +527,7 @@ public class PDFTextStripper extends LegacyPDFStreamEngine
             // these examples.
 
             // Keeps track of the previous average character width
-            float previousAveCharWidth = -1;
+            float previousAveCharWidth = -1; // 平均字符宽度
             while (textIter.hasNext())
             {
                 TextPosition position = textIter.next();
@@ -538,7 +538,7 @@ public class PDFTextStripper extends LegacyPDFStreamEngine
                 // or a change in the font size
                 if (lastPosition != null &&
                     (position.getFont() != lastPosition.getTextPosition().getFont() || 
-                     Float.compare(position.getFontSize(),lastPosition.getTextPosition().getFontSize()) != 0))
+                     Float.compare(position.getFontSize(),lastPosition.getTextPosition().getFontSize()) != 0)) // 表示和之前的字体或者字体大小不一致
                 {
                     previousAveCharWidth = -1;
                 }
@@ -630,7 +630,7 @@ public class PDFTextStripper extends LegacyPDFStreamEngine
                     // now
                     if (!overlap(positionY, positionHeight, maxYForLine, maxHeightForLine))
                     {
-                        writeLine(normalize(line));
+                        writeLine(normalize(line)); // 写结果
                         line.clear();
                         lastLineStartPosition = handleLineSeparation(current, lastPosition,
                                 lastLineStartPosition, maxHeightForLine);
@@ -1703,7 +1703,7 @@ public class PDFTextStripper extends LegacyPDFStreamEngine
      * @param line a list with the words of the given line
      * @throws IOException if something went wrong
      */
-    private void writeLine(List<WordWithTextPositions> line)
+    protected void writeLine(List<WordWithTextPositions> line) // modify：private->protected
             throws IOException
     {
         int numberOfStrings = line.size();
@@ -2021,7 +2021,7 @@ public class PDFTextStripper extends LegacyPDFStreamEngine
      *
      * @author Axel Dörfler
      */
-    private static final class WordWithTextPositions
+    public static final class WordWithTextPositions // modify: private->public
     {
         final String text;
         final List<TextPosition> textPositions;

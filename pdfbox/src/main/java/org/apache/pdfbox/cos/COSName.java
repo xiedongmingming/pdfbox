@@ -176,7 +176,7 @@ public final class COSName extends COSBase implements Comparable<COSName>
     public static final COSName CREATOR = getPDFName("Creator");
     public static final COSName CRL = getPDFName("CRL");
     public static final COSName CRLS = getPDFName("CRLS");
-    public static final COSName CROP_BOX = getPDFName("CropBox");
+    public static final COSName CROP_BOX = getPDFName("CropBox"); // 页面大小
     public static final COSName CRYPT = getPDFName("Crypt");
     public static final COSName CS = getPDFName("CS");
     public static final COSName CYX = getPDFName("CYX");
