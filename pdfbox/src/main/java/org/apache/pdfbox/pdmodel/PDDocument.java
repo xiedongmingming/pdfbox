@@ -115,7 +115,7 @@ public class PDDocument implements Closeable
 
     // cached values
     private PDDocumentInformation documentInformation;
-    private PDDocumentCatalog documentCatalog; // 目录
+    private PDDocumentCatalog documentCatalog; // 目录（ROOT）
 
     // the encryption will be cached here. When the document is decrypted then
     // the COSDocument will not have an "Encrypt" dictionary anymore and this object must be used
@@ -129,7 +129,7 @@ public class PDDocument implements Closeable
     private Long documentId;
 
     // the pdf to be read
-    private final RandomAccessRead pdfSource; // RandomAccessReadBufferedFile
+    private final RandomAccessRead pdfSource; // 实现类：RandomAccessReadBufferedFile
 
     // the access permissions of the document
     private AccessPermission accessPermission;

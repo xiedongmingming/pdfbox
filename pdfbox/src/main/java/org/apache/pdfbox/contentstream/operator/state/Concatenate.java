@@ -30,7 +30,7 @@ import org.apache.pdfbox.contentstream.operator.OperatorName;
 import org.apache.pdfbox.contentstream.operator.OperatorProcessor;
 
 /**
- * cm: Concatenate matrix to current transformation matrix.
+ * cm: Concatenate matrix to current transformation matrix. 将矩阵连接到当前变换矩阵
  *
  * @author Laurent Huault
  */

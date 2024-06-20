@@ -77,20 +77,20 @@ public abstract class PDFStreamEngine
 {
     private static final Logger LOG = LogManager.getLogger(PDFStreamEngine.class);
 
-    private final Map<String, OperatorProcessor> operators = new HashMap<>(80);
+    private final Map<String, OperatorProcessor> operators = new HashMap<>(80); // Operator：是干啥的
 
     private Deque<PDGraphicsState> graphicsStack = new ArrayDeque<>();
 
-    private PDResources resources;
-    private PDPage currentPage;
-    private boolean isProcessingPage;
+    private PDResources resources; //
+    private PDPage currentPage; // 当前处理的页
+    private boolean isProcessingPage; //
     private Matrix initialMatrix;
 
     // used to monitor potentially recursive operations.
-    private int level = 0;
+    private int level = 0; // 用于监视潜在的递归操作
 
     // default font, used if there isn't any font available
-    private PDFont defaultFont;
+    private PDFont defaultFont; // 默认字体（在没有可用字体时使用）
     
     /**
      * Creates a new PDFStreamEngine.
@@ -119,10 +119,10 @@ public abstract class PDFStreamEngine
             throw new IllegalArgumentException("Page cannot be null");
         }
         currentPage = page;
-        graphicsStack.clear();
+        graphicsStack.clear(); // 图形栈
         graphicsStack.push(new PDGraphicsState(page.getCropBox()));
         resources = null;
-        initialMatrix = page.getMatrix();
+        initialMatrix = page.getMatrix(); // ？？？？干啥
     }
 
     /**
@@ -156,7 +156,7 @@ public abstract class PDFStreamEngine
     }
 
     /**
-     * Shows a transparency group from the content stream.
+     * Shows a transparency group from the content stream. 显示来自内容流的透明度组
      *
      * @param form transparency group (form) XObject
      * @throws IOException if the transparency group cannot be processed
@@ -361,7 +361,7 @@ public abstract class PDFStreamEngine
     }
 
     /**
-     * Process the given tiling pattern.
+     * Process the given tiling pattern. 处理给定的平铺图案
      *
      * @param tilingPattern the tiling pattern
      * @param color color to use, if this is an uncoloured pattern, otherwise null.
@@ -484,7 +484,7 @@ public abstract class PDFStreamEngine
      * @param contentStream the content stream
      * @throws IOException if there is an exception while processing the stream
      */
-    private void processStream(PDContentStream contentStream) throws IOException
+    private void processStream(PDContentStream contentStream) throws IOException // PDPage
     {
         PDResources parent = pushResources(contentStream);
         Deque<PDGraphicsState> savedStack = saveGraphicsStack();
@@ -523,7 +523,7 @@ public abstract class PDFStreamEngine
     {
         List<COSBase> arguments = new ArrayList<>();
         PDFStreamParser parser = new PDFStreamParser(contentStream);
-        Object token = parser.parseNextToken();
+        Object token = parser.parseNextToken(); // 读取标识
         while (token != null)
         {
             if (token instanceof Operator)
@@ -890,6 +890,7 @@ public abstract class PDFStreamEngine
         {
             try
             {
+                System.out.println("operator："+operator.getName() + ", 参数："+ operands);
                 processor.process(operator, operands);
             }
             catch (IOException e)

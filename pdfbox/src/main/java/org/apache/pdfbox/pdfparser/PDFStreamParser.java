@@ -54,7 +54,7 @@ public class PDFStreamParser extends BaseParser
      * @param pdContentstream The content stream to parse.
      * @throws IOException If there is an error initializing the stream.
      */
-    public PDFStreamParser(PDContentStream pdContentstream) throws IOException
+    public PDFStreamParser(PDContentStream pdContentstream) throws IOException // PDPage
     {
         super(pdContentstream.getContentsForStreamParsing());
     }

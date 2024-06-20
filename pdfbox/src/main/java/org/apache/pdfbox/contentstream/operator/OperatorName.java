@@ -16,10 +16,10 @@
  */
 package org.apache.pdfbox.contentstream.operator;
 
-public final class OperatorName
+public final class OperatorName // 共73
 {
 
-    // non stroking color
+    // non stroking color -- 6
     public static final String NON_STROKING_COLOR = "sc";
     public static final String NON_STROKING_COLOR_N = "scn";
     public static final String NON_STROKING_RGB = "rg";
@@ -27,7 +27,7 @@ public final class OperatorName
     public static final String NON_STROKING_CMYK = "k";
     public static final String NON_STROKING_COLORSPACE = "cs";
 
-    // stroking color
+    // stroking color -- 6
     public static final String STROKING_COLOR = "SC";
     public static final String STROKING_COLOR_N = "SCN";
     public static final String STROKING_COLOR_RGB = "RG";
@@ -35,7 +35,7 @@ public final class OperatorName
     public static final String STROKING_COLOR_CMYK = "K";
     public static final String STROKING_COLORSPACE = "CS";
 
-    // marked content
+    // marked content -- 6
     public static final String BEGIN_MARKED_CONTENT_SEQ = "BDC";
     public static final String BEGIN_MARKED_CONTENT = "BMC";
     public static final String END_MARKED_CONTENT = "EMC";
@@ -43,21 +43,21 @@ public final class OperatorName
     public static final String MARKED_CONTENT_POINT = "MP";
     public static final String DRAW_OBJECT = "Do";
 
-    // state
-    public static final String CONCAT = "cm";
+    // state -- 12
+    public static final String CONCAT = "cm"; // 矩阵拼接
     public static final String RESTORE = "Q";
     public static final String SAVE = "q";
     public static final String SET_FLATNESS = "i";
     public static final String SET_GRAPHICS_STATE_PARAMS = "gs";
     public static final String SET_LINE_CAPSTYLE = "J";
-    public static final String SET_LINE_DASHPATTERN = "d";
-    public static final String SET_LINE_JOINSTYLE = "j";
+    public static final String SET_LINE_DASHPATTERN = "d"; // 破折线
+    public static final String SET_LINE_JOINSTYLE = "j"; // 连接点
     public static final String SET_LINE_MITERLIMIT = "M";
-    public static final String SET_LINE_WIDTH = "w";
+    public static final String SET_LINE_WIDTH = "w"; // 线宽
     public static final String SET_MATRIX = "Tm";
     public static final String SET_RENDERINGINTENT = "ri";
 
-    // graphics
+    // graphics -- 23
     public static final String APPEND_RECT = "re";
     public static final String BEGIN_INLINE_IMAGE = "BI";
     public static final String BEGIN_INLINE_IMAGE_DATA = "ID";
@@ -77,12 +77,12 @@ public final class OperatorName
     public static final String FILL_NON_ZERO_AND_STROKE = "B";
     public static final String FILL_NON_ZERO = "f";
     public static final String LEGACY_FILL_NON_ZERO = "F";
-    public static final String LINE_TO = "l";
-    public static final String MOVE_TO = "m";
+    public static final String LINE_TO = "l"; // 画线
+    public static final String MOVE_TO = "m"; // 移动到
     public static final String SHADING_FILL = "sh";
-    public static final String STROKE_PATH = "S";
+    public static final String STROKE_PATH = "S"; // 描绘
 
-    // text
+    // text -- 16
     public static final String BEGIN_TEXT = "BT";
     public static final String END_TEXT = "ET";
     public static final String MOVE_TEXT = "Td";
@@ -100,11 +100,11 @@ public final class OperatorName
     public static final String SHOW_TEXT_LINE = "'";
     public static final String SHOW_TEXT_LINE_AND_SPACE = "\"";
 
-    // type3 font
+    // type3 font -- 2
     public static final String TYPE3_D0 = "d0";
     public static final String TYPE3_D1 = "d1";
 
-    // compatibility section
+    // compatibility section -- 2
     public static final String BEGIN_COMPATIBILITY_SECTION = "BX";
     public static final String END_COMPATIBILITY_SECTION = "EX";
 

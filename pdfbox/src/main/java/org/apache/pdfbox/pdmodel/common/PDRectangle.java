@@ -149,10 +149,10 @@ public class PDRectangle implements COSObjectable
         float[] values = Arrays.copyOf(array.toFloatArray(), 4);
         rectArray = new COSArray(List.of(
             // we have to start with the lower left corner
-            new COSFloat( Math.min(values[0],values[2] )),
-            new COSFloat( Math.min(values[1],values[3] )),
-            new COSFloat( Math.max(values[0],values[2] )),
-            new COSFloat( Math.max(values[1],values[3] ))
+            new COSFloat( Math.min(values[0],values[2] )), // Xmin
+            new COSFloat( Math.min(values[1],values[3] )), // Ymin
+            new COSFloat( Math.max(values[0],values[2] )), // Xmax
+            new COSFloat( Math.max(values[1],values[3] ))  // Ymax
         ));
     }
 
@@ -204,7 +204,7 @@ public class PDRectangle implements COSObjectable
      *
      * @return The lower left x.
      */
-    public float getLowerLeftX()
+    public float getLowerLeftX() // 左下角的X坐标(原点)
     {
         return ((COSNumber)rectArray.get(0)).floatValue();
     }
@@ -346,12 +346,12 @@ public class PDRectangle implements COSObjectable
      * 
      * @return a general path equivalent to this rectangle
      */
-    public GeneralPath toGeneralPath()
+    public GeneralPath toGeneralPath() // [0.0,0.0,595.32,841.92]
     {
-        float x1 = getLowerLeftX();
-        float y1 = getLowerLeftY();
-        float x2 = getUpperRightX();
-        float y2 = getUpperRightY();
+        float x1 = getLowerLeftX(); // 0.0
+        float y1 = getLowerLeftY(); // 0.0
+        float x2 = getUpperRightX(); // 595.32
+        float y2 = getUpperRightY(); // 841.92
         GeneralPath path = new GeneralPath();
         path.moveTo(x1, y1);
         path.lineTo(x2, y1);

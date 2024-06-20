@@ -241,7 +241,7 @@ public class Loader
      * @throws InvalidPasswordException If the file required a non-empty password.
      * @throws IOException in case of a file reading or parsing error
      */
-    public static PDDocument loadPDF(File file) throws IOException
+    public static PDDocument loadPDF(File file) throws IOException // 对外接口
     {
         return Loader.loadPDF(file, "", IOUtils.createMemoryOnlyStreamCache());
     }

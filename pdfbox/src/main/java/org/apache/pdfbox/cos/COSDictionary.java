@@ -54,7 +54,7 @@ public class COSDictionary extends COSBase implements COSUpdateInfo
     /**
      * The name-value pairs of this dictionary. The pairs are kept in the order they were added to the dictionary.
      */
-    protected Map<COSName, COSBase> items = new LinkedHashMap<>();
+    protected Map<COSName, COSBase> items = new LinkedHashMap<>(); // 底层数据
     private final COSUpdateState updateState;
 
     /**

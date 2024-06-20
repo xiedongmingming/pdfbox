@@ -67,10 +67,10 @@ import org.apache.pdfbox.pdmodel.font.PDFontDescriptor;
 
 /**
  * LEGACY text calculations which are known to be incorrect but are depended on by PDFTextStripper.
- * 
+ * 遗产 这是已知的是不正确的文本计算，但被PDFTextStripper依赖。
  * This class exists only so that we don't break the code of users who have their own subclasses of
  * PDFTextStripper. It replaces the mostly empty implementation of showGlyph() in PDFStreamEngine
- * with a heuristic implementation which is backwards compatible.
+ * with a heuristic implementation which is backwards compatible. 启发式
  *
  * DO NOT USE THIS CODE UNLESS YOU ARE WORKING WITH PDFTextStripper.
  * THIS CODE IS DELIBERATELY INCORRECT, USE PDFStreamEngine INSTEAD.
@@ -103,7 +103,7 @@ class LegacyPDFStreamEngine extends PDFStreamEngine
     /**
      * Constructor.
      */
-    LegacyPDFStreamEngine()
+    LegacyPDFStreamEngine() // 共22个
     {
         addOperator(new BeginText(this));
         addOperator(new Concatenate(this));
@@ -272,8 +272,8 @@ class LegacyPDFStreamEngine extends PDFStreamEngine
         // the space width has to be transformed into display units
         float spaceWidthDisplay = spaceWidthText * textRenderingMatrix.getScalingFactorX();
 
-        // use our additional glyph list for Unicode mapping
-        String unicode = font.toUnicode(code, GLYPHLIST);
+        // use our additional glyph list for Unicode mapping 使用附加符号列表进行UNICODE映射
+        String unicode = font.toUnicode(code, GLYPHLIST); // 获取UNICODE数据
 
         // when there is no Unicode mapping available, Acrobat simply coerces the character code
         // into Unicode, so we do the same. Subclasses of PDFStreamEngine don't necessarily want

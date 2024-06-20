@@ -2,6 +2,8 @@ package org.apache.pdfbox.examples.devp;
 
 import org.apache.commons.lang3.StringUtils;
 import org.apache.pdfbox.Loader;
+import org.apache.pdfbox.contentstream.operator.Operator;
+import org.apache.pdfbox.cos.COSBase;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.pdmodel.PDPage;
 import org.apache.pdfbox.text.PDFTextStripper;
@@ -21,9 +23,23 @@ public class CustomerPDFTextStripper extends PDFTextStripper {
     protected void writePageStart() throws IOException {
 
     }
+
     @Override
     protected void writePageEnd() throws IOException {
 
+    }
+    @Override
+    public void beginText() throws IOException {
+        System.out.println("文本开始>>>>>>>>>>>");
+    }
+    @Override
+    public void endText() throws IOException
+    {
+        System.out.println("文本结束<<<<<<<<<<");
+    }
+    @Override
+    protected void unsupportedOperator(Operator operator, List<COSBase> operands) throws IOException {
+        System.out.println("未识别的标识：" + operator.getName());
     }
 
 //    @Override
@@ -79,33 +95,29 @@ public class CustomerPDFTextStripper extends PDFTextStripper {
 
         for (TextPosition text : textPositions) {
 
-            // System.out.println(text.getUnicode() + " [(X=" + text.getXDirAdj() + ",Y=" + text.getYDirAdj() + ") height=" + text.getHeightDir() + " width=" + text.getWidthDirAdj() + "]");
-
-            if (text.getXDirAdj() < xMin) {
-                xMin = text.getXDirAdj();
+            if (text.getX() < xMin) {
+                xMin = text.getX();
             }
-            if (text.getXDirAdj() > xMax) {
-                xMax = text.getXDirAdj();
+            if (text.getX() > xMax) {
+                xMax = text.getX();
             }
 
-            if (text.getYDirAdj() < yMin) {
-                yMin = text.getYDirAdj();
+            if (text.getY() < yMin) {
+                yMin = text.getY();
             }
-            if (text.getYDirAdj() > yMax) {
-                yMax = text.getYDirAdj();
+            if (text.getY() > yMax) {
+                yMax = text.getY();
             }
 
-            width += text.getWidthDirAdj();
+            width += text.getWidth();
 
-            if (text.getHeightDir() > maxHeight) {
-                maxHeight = text.getHeightDir();
+            if (text.getHeight() > maxHeight) {
+                maxHeight = text.getTextMatrix().getScaleX();
             }
 
         }
 
-        System.out.println(string);
-
-        // System.out.println(string + "[(X=" + xMin + ",Y=" + yMin + ") height=" + maxHeight + " width=" + width + "]");
+        System.out.println(string + "[(X=" + xMin + ",Y=" + yMin + ") height=" + maxHeight + " width=" + width + "]");
 
     }
 
@@ -118,16 +130,19 @@ public class CustomerPDFTextStripper extends PDFTextStripper {
         PDDocument document = null;
 
         String fileName = "C:\\Users\\98661\\Desktop\\20170501-天风证券-北京银行-601169.SH-年报点评：定增支撑业务发展，负债结构仍待优化.pdf";
+        // String fileName = "D:\\workspace\\pdf\\articls.pdf";
 
         try {
 
             document = Loader.loadPDF(new File(fileName));
 
             PDFTextStripper stripper = new CustomerPDFTextStripper();
-
+            stripper.setAddMoreFormatting(true);
+//            stripper.setStartBookmark();
+//            stripper.setEndBookmark();
 //            stripper.setSortByPosition(true);
-            stripper.setStartPage(1);
-            stripper.setEndPage(1); // document.getNumberOfPages()
+            stripper.setStartPage(2);
+            stripper.setEndPage(2); // document.getNumberOfPages()
 
             Writer dummy = new OutputStreamWriter(new ByteArrayOutputStream());
 

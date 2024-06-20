@@ -72,10 +72,10 @@ public class PDPage implements COSObjectable, PDContentStream
 
     private static final byte[] DELIMITER = { '\n' };
 
-    private final COSDictionary page;
+    private final COSDictionary page; // 页面内容
     private PDResources pageResources;
-    private ResourceCache resourceCache;
-    private PDRectangle mediaBox;
+    private ResourceCache resourceCache; // DefaultResourceCache
+    private PDRectangle mediaBox; //
 
     /**
      * Creates a new PDPage instance for embedding, with a size of U.S. Letter (8.5 x 11 inches).
@@ -382,7 +382,7 @@ public class PDPage implements COSObjectable, PDContentStream
      * 
      * @return the cropbox of the page
      */
-    public PDRectangle getCropBox()
+    public PDRectangle getCropBox() // 裁剪框
     {
         COSBase base = PDPageTree.getInheritableAttribute(page, COSName.CROP_BOX);
         if (base instanceof COSArray)
@@ -502,7 +502,7 @@ public class PDPage implements COSObjectable, PDContentStream
     }
     
     /**
-     * Clips the given box to the bounds of the media box.
+     * Clips the given box to the bounds of the media box. 将给定的框剪辑到媒体框的边界上。
      */
     private PDRectangle clipToMediaBox(PDRectangle box)
     {

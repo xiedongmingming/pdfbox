@@ -45,7 +45,7 @@ public class BeginText extends OperatorProcessor
         PDFStreamEngine context = getContext();
         context.setTextMatrix( new Matrix());
         context.setTextLineMatrix( new Matrix() );
-        context.beginText();
+        context.beginText(); // 钩子
     }
 
     @Override

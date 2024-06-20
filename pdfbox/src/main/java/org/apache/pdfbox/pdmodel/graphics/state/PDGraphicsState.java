@@ -45,14 +45,14 @@ import org.apache.pdfbox.util.Matrix;
 public class PDGraphicsState implements Cloneable
 {
     private boolean isClippingPathDirty;
-    private List<Path2D> clippingPaths = new ArrayList<>(1);
+    private List<Path2D> clippingPaths = new ArrayList<>(1); // ？？？
     private Map<Path2D, Area> clippingCache = new IdentityHashMap<>();
     private Matrix currentTransformationMatrix = new Matrix();
     private PDColor strokingColor = PDDeviceGray.INSTANCE.getInitialColor();
     private PDColor nonStrokingColor = PDDeviceGray.INSTANCE.getInitialColor();
     private PDColorSpace strokingColorSpace = PDDeviceGray.INSTANCE;
     private PDColorSpace nonStrokingColorSpace = PDDeviceGray.INSTANCE;
-    private PDTextState textState = new PDTextState();
+    private PDTextState textState = new PDTextState(); // ????
     private float lineWidth = 1;
     private int lineCap = BasicStroke.CAP_BUTT;
     private int lineJoin = BasicStroke.JOIN_MITER;
@@ -65,8 +65,8 @@ public class PDGraphicsState implements Cloneable
     private double alphaConstant = 1.0;
     private double nonStrokingAlphaConstant = 1.0;
     private boolean alphaSource = false;
-    private Matrix textMatrix = null;
-    private Matrix textLineMatrix = null;
+    private Matrix textMatrix = null; // 文本专用???
+    private Matrix textLineMatrix = null; // 文本专用???
 
     // DEVICE-DEPENDENT parameters
     private boolean overprint = false;
@@ -80,12 +80,12 @@ public class PDGraphicsState implements Cloneable
     private double smoothness = 0;
 
     /**
-     * Constructor with a given page size to initialize the clipping path.
+     * Constructor with a given page size to initialize the clipping path. 构造函数，使用给定的页面大小初始化剪切路径。
      * @param page the size of the page
      */
     public PDGraphicsState(PDRectangle page)
     {
-        clippingPaths.add(new Path2D.Double(page.toGeneralPath()));
+        clippingPaths.add(new Path2D.Double(page.toGeneralPath())); // [0.0,0.0,595.32,841.92]
     }
 
     /**

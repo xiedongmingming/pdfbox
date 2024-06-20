@@ -23,7 +23,7 @@
     <parent>
         <groupId>org.apache.pdfbox</groupId>
         <artifactId>pdfbox-parent</artifactId>
-        <version>4.0.0-SNAPSHOT</version>
+        <version>4.0.0-SKLZSNAPSHOT</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
 

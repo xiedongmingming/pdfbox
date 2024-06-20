@@ -140,7 +140,7 @@ public class PDFParser extends COSParser
      * This will parse the stream and populate the PDDocument object. This will close the keystore stream when it is
      * done parsing.
      *
-     * @param lenient activate leniency if set to true
+     * @param lenient activate leniency if set to true 宽大处理
      * @return the populated PDDocument
      * 
      * @throws InvalidPasswordException If the password is incorrect.

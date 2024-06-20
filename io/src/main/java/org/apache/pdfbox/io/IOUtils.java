@@ -302,7 +302,7 @@ public final class IOUtils
      * 
      * @return a function to create an instance of a memory only StreamCache using unrestricted main memory
      */
-    public static StreamCacheCreateFunction createMemoryOnlyStreamCache()
+    public static StreamCacheCreateFunction createMemoryOnlyStreamCache() // 默认
     {
         return streamCache;
     }

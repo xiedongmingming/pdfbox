@@ -28,12 +28,12 @@ import java.util.concurrent.ConcurrentMap;
  */
 public final class Operator
 {
-    private final String theOperator;
-    private byte[] imageData;
-    private COSDictionary imageParameters;
+    private final String theOperator; // 名称
+    private byte[] imageData; // 特定的操作符需要的参数
+    private COSDictionary imageParameters;  // 特定的操作符需要的参数
 
     /** map for singleton operator objects; use {@link ConcurrentHashMap} for better scalability with multiple threads */
-    private static final ConcurrentMap<String,Operator> operators = new ConcurrentHashMap<>();
+    private static final ConcurrentMap<String,Operator> operators = new ConcurrentHashMap<>(); // 除了BEGIN_INLINE_IMAGE_DATA和BEGIN_INLINE_IMAGE外的OPERATOR都可以缓存
 
     /**
      * Constructor.

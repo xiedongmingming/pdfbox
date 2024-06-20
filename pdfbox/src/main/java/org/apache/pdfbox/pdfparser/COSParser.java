@@ -112,9 +112,9 @@ public class COSParser extends BaseParser implements ICOSParser
     /**
      * is parser using auto healing capacity ?
      */
-    private boolean isLenient = true;
+    private boolean isLenient = true; // 解析器是否使用自动修复功能
 
-    protected boolean initialParseDone = false; // 标识文档是否解析过
+    protected boolean initialParseDone = false; // 标识文档是否解析过（TRAILER、ROOT等）
 
     private boolean trailerWasRebuild = false;
     
@@ -206,7 +206,7 @@ public class COSParser extends BaseParser implements ICOSParser
                         eofLookupRangeStr);
             }
         }
-        document = new COSDocument(streamCacheCreateFunction, this);
+        document = new COSDocument(streamCacheCreateFunction, this); // PARSER生成文档
     }
 
     /**
@@ -246,7 +246,7 @@ public class COSParser extends BaseParser implements ICOSParser
         {
             // parse startxref
             // TODO FDF files don't have a startxref value, so that rebuildTrailer is triggered
-            long startXRefOffset = getStartxrefOffset();
+            long startXRefOffset = getStartxrefOffset(); // 偏移量：startxref
             if (startXRefOffset > -1)
             {
                 XrefParser xrefParser = new XrefParser(this);
@@ -309,7 +309,7 @@ public class COSParser extends BaseParser implements ICOSParser
         // read trailing bytes into buffer
         try
         {
-            final int trailByteCount = (fileLen < readTrailBytes) ? (int) fileLen : readTrailBytes;
+            final int trailByteCount = (fileLen < readTrailBytes) ? (int) fileLen : readTrailBytes; // 最多读取的字节数：readTrailBytes
             buf = new byte[trailByteCount];
             skipBytes = fileLen - trailByteCount;
             source.seek(skipBytes);
@@ -333,7 +333,7 @@ public class COSParser extends BaseParser implements ICOSParser
             source.seek(0);
         }
         // find last '%%EOF'
-        int bufOff = lastIndexOf(EOF_MARKER, buf, buf.length);
+        int bufOff = lastIndexOf(EOF_MARKER, buf, buf.length); // 定位结束符
         if (bufOff < 0)
         {
             if (isLenient) 
@@ -1069,7 +1069,7 @@ public class COSParser extends BaseParser implements ICOSParser
             header = readLine();
             while (!header.contains(headerMarker))
             {
-                // if a line starts with a digit, it has to be the first one with data in it
+                // if a line starts with a digit, it has to be the first one with data in it 如果一行以数字开头，它必须是第一个包含数据的行
                 if ((!header.isEmpty()) && (Character.isDigit(header.charAt(0))))
                 {
                     break;

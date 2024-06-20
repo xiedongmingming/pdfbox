@@ -91,12 +91,12 @@ public final class Matrix implements Cloneable
      * @see Matrix#getScaleInstance(float, float)
      * @see Matrix#getTranslateInstance(float, float)
      *
-     * @param a the X coordinate scaling element (m00) of the 3x3 matrix
-     * @param b the Y coordinate shearing element (m10) of the 3x3 matrix
-     * @param c the X coordinate shearing element (m01) of the 3x3 matrix
-     * @param d the Y coordinate scaling element (m11) of the 3x3 matrix
-     * @param e the X coordinate translation element (m02) of the 3x3 matrix
-     * @param f the Y coordinate translation element (m12) of the 3x3 matrix
+     * @param a the X coordinate scaling element (m00) of the 3x3 matrix        3x3矩阵的X坐标缩放元素(m00)
+     * @param b the Y coordinate shearing element (m10) of the 3x3 matrix       3x3矩阵的Y坐标剪切单元(m10)
+     * @param c the X coordinate shearing element (m01) of the 3x3 matrix       3x3矩阵的X坐标剪切单元(m01)
+     * @param d the Y coordinate scaling element (m11) of the 3x3 matrix        3x3矩阵的Y坐标缩放元素(m11)
+     * @param e the X coordinate translation element (m02) of the 3x3 matrix    3x3矩阵的X坐标平移元素(m02)
+     * @param f the Y coordinate translation element (m12) of the 3x3 matrix    3x3矩阵的Y坐标平移元素(m12)
      */
     public Matrix(float a, float b, float c, float d, float e, float f)
     {

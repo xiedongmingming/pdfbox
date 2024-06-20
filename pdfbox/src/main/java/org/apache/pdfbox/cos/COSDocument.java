@@ -46,7 +46,7 @@ public class COSDocument extends COSBase implements Closeable
      */
     private static final Logger LOG = LogManager.getLogger(COSDocument.class);
     
-    private float version = 1.4f;
+    private float version = 1.4f; // 解析出的版本号
 
     /**
      * Maps ObjectKeys to a COSObject. Note that references to these objects
@@ -84,14 +84,14 @@ public class COSDocument extends COSBase implements Closeable
 
     private boolean hasHybridXRef = false;
 
-    private final RandomAccessStreamCache streamCache;
+    private final RandomAccessStreamCache streamCache; // 默认：RandomAccessStreamCacheImpl
 
     /**
      * Used for incremental saving, to avoid XRef object numbers from being reused.
      */
     private long highestXRefObjectNumber;
 
-    private final ICOSParser parser;
+    private final ICOSParser parser; // PDFParser
     
     private final COSDocumentState documentState = new COSDocumentState();
 

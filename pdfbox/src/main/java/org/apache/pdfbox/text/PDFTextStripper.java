@@ -124,10 +124,10 @@ public class PDFTextStripper extends LegacyPDFStreamEngine
     private String articleStart = "";
     private String articleEnd = "";
 
-    private int currentPageNo = 1;
+    private int currentPageNo = 1; // 初始值
     private int startPage = 1; // 起始页码
     private int endPage = Integer.MAX_VALUE; // 结束页码
-    private PDOutlineItem startBookmark = null; // ???
+    private PDOutlineItem startBookmark = null; // 书签-用来定位页面的???
 
     // 1-based bookmark pages
     private int startBookmarkPageNumber = -1;
@@ -220,7 +220,7 @@ public class PDFTextStripper extends LegacyPDFStreamEngine
      */
     public void writeText(PDDocument doc, Writer outputStream) throws IOException
     {
-        resetEngine();
+        resetEngine(); // ？？？
         document = doc;
         output = outputStream;
         if (getAddMoreFormatting())
@@ -267,7 +267,7 @@ public class PDFTextStripper extends LegacyPDFStreamEngine
             // -1 = undefined
             endBookmarkPageNumber = -1;
         }
-
+        // **************************************************************************
         if (startBookmarkPageNumber == -1 && startBookmark != null && endBookmarkPageNumber == -1
                 && endBookmark != null
                 && startBookmark.getCOSObject() == endBookmark.getCOSObject())
@@ -535,7 +535,7 @@ public class PDFTextStripper extends LegacyPDFStreamEngine
                 String characterValue = position.getUnicode();
 
                 // Resets the average character width when we see a change in font
-                // or a change in the font size
+                // or a change in the font size 当我们看到字体或字体大小发生变化时，重置平均字符宽度
                 if (lastPosition != null &&
                     (position.getFont() != lastPosition.getTextPosition().getFont() || 
                      Float.compare(position.getFontSize(),lastPosition.getTextPosition().getFontSize()) != 0)) // 表示和之前的字体或者字体大小不一致
@@ -549,7 +549,7 @@ public class PDFTextStripper extends LegacyPDFStreamEngine
                 float positionHeight;
 
                 // If we are sorting, then we need to use the text direction
-                // adjusted coordinates, because they were used in the sorting.
+                // adjusted coordinates, because they were used in the sorting. 如果我们正在排序，那么我们需要使用文本方向调整坐标，因为它们在排序中使用。
                 if (getSortByPosition())
                 {
                     positionX = position.getXDirAdj();
@@ -569,7 +569,7 @@ public class PDFTextStripper extends LegacyPDFStreamEngine
                 int wordCharCount = position.getIndividualWidths().length;
 
                 // Estimate the expected width of the space based on the
-                // space character with some margin.
+                // space character with some margin. 根据带有一些边距的空格字符估计空格的预期宽度。
                 float wordSpacing = position.getWidthOfSpace();
                 float deltaSpace;
                 if (Float.compare(wordSpacing, 0) == 0 || Float.isNaN(wordSpacing))

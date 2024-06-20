@@ -159,7 +159,7 @@ public abstract class BaseParser
     /**
      * This is the stream that will be read from.
      */
-    protected final RandomAccessRead source;
+    protected final RandomAccessRead source; // 实现类：RandomAccessReadBufferedFile
 
     /**
      * This is the document that will be parsed.
