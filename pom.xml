@@ -30,7 +30,7 @@
   <groupId>org.apache.pdfbox</groupId>
   <artifactId>pdfbox-parent</artifactId>
   <packaging>pom</packaging>
-  <version>4.0.0-SKLZSNAPSHOT</version>
+  <version>4.0.1-SNAPSHOT</version>
 
   <name>Apache PDFBox parent</name>
   <inceptionYear>2002</inceptionYear>
@@ -568,5 +568,15 @@ A release vote template has been generated for you:
             </roles>
         </developer>
     </developers>
+
+    <!-- add start：xieming 2024-06-20 -->
+    <distributionManagement>
+        <snapshotRepository>
+            <id>snapshots</id>
+            <name>maven-snapshots</name>
+            <url>https://nexus.bj.adwetec.cn/repository/maven-snapshots</url>
+        </snapshotRepository>
+    </distributionManagement>
+    <!-- add end -->
 
 </project>

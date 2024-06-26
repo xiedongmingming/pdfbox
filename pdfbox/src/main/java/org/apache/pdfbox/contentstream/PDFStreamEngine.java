@@ -890,7 +890,7 @@ public abstract class PDFStreamEngine
         {
             try
             {
-                System.out.println("operator："+operator.getName() + ", 参数："+ operands);
+                // System.out.println("operator："+operator.getName() + ", 参数："+ operands);
                 processor.process(operator, operands);
             }
             catch (IOException e)
